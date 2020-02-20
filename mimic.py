@@ -82,6 +82,11 @@ def print_mimic(mimic_dict, start_word):
 def mimic_dict(filename):
 
     mimic_dict= {}
+    f = open(filename, 'r')
+    text = f.read
+    f.close()
+    
+    
 
 # Provided main(), calls mimic_dict() and mimic()
 def main():
