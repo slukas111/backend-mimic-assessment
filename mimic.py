@@ -78,8 +78,10 @@ def print_mimic(mimic_dict, start_word):
         - Repeat this process 200 times
     """
     # +++your code here+++
-    pass
+    #pass
+def mimic_dict(filename):
 
+    mimic_dict= {}
 
 # Provided main(), calls mimic_dict() and mimic()
 def main():
