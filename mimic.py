@@ -70,7 +70,6 @@ def create_mimic_dict(filename):
     # +++your code here+++
 
 
-def print_mimic(mimic_dict, start_word):
     """Given a previously compiled mimic_dict and start_word, prints 200 random words:
         - Print the start_word
         - Lookup the start_word in your mimic_dict and get it's next-list
@@ -81,12 +80,21 @@ def print_mimic(mimic_dict, start_word):
     #pass
 def mimic_dict(filename):
 
-    mimic_dict= {}
+    mimic_= {}
     f = open(filename, 'r')
-    text = f.read
+    word = f.read().split()
     f.close()
+
+    for i in range(0, len( word ) -1):
+        if word[i] in mimic_:
+            mimic_[word[i]].append[word[i]]
+        else:
+            word[mimic_[i]] = [word[i]]
+    return word
     
     
+#def print_mimic(mimic_dict, start_word):
+
 
 # Provided main(), calls mimic_dict() and mimic()
 def main():
