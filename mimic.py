@@ -80,22 +80,31 @@ def create_mimic_dict(filename):
     #pass
 def mimic_dict(filename):
 
-    mimic_= {}
+    mimic_dict= {}
     f = open(filename, 'r')
-    word = f.read().split()
+    #with open(filename, 'r') as f:
+    text = f.read()
     f.close()
 
-    for i in range(0, len( word ) -1):
-        if word[i] in mimic_:
-            mimic_[word[i]].append[word[i]]
+    words = text.split()
+    prev = ''
+    for word in words:
+        if not prev in mimic_dict:
+            mimic_dict[prev]=word
         else:
-            word[mimic_[i]] = [word[i]]
-    return word
+            mimic_dict[prev].append(word)
     
-    
-#def print_mimic(mimic_dict, start_word):
+        prev = word
+    return mimic_dict
 
+def print_mimic(mimic_dict, start_word):
+    for i in range(200):
+        #print word
 
+        nexts = mimic_dict.get(word)
+        if not nexts:
+            nexts = mimic_dict['']
+        word = random.choice(nexts)
 # Provided main(), calls mimic_dict() and mimic()
 def main():
     if len(sys.argv) != 2:
