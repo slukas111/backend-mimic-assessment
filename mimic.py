@@ -78,17 +78,59 @@ def create_mimic_dict(filename):
     """
     # +++your code here+++
     #pass
-def mimic_dict(filename):
 
+<<<<<<< HEAD
+# def mimic_dict(filename):
+#     """Returns mimic dict mapping each word to list of words which follow it."""
+#     mimic = {}
+# #     prev = ''
+# with open('alice.txt') as f:
+#         # one full text line
+#     #     words = f.read().split()
+#     # for word in words:
+#     #     print(word)
+#     for line in f:
+#         l = list(line)
+#         for char in l:
+#             print(char)
+##got some help
+def mimic_dict(filename):
+    mimic_dict = {}
+    f = open(filename, 'r')
+    text = f.read()
+    f.close()
+    words = text.split()
+    prev = ''
+    for word in words:
+        if not prev in mimic_dict:
+            mimic_dict[prev] = [word]
+        else:
+            mimic_dict[prev].append(word)
+
+        prev = word
+    return mimic_dict
+
+
+def print_mimic(mimic_dict, word):
+    for unused_i in range(200):
+        print word,
+        nexts = mimic_dict.get(word)          # Returns None if not found
+        if not nexts:
+            nexts = mimic_dict['']  # Fallback to '' if not found
+        word = random.choice(nexts)
+
+
+=======
     
+>>>>>>> 4171e9f5b28a6e002e307dda0cff8acf1ea74ebd
 # Provided main(), calls mimic_dict() and mimic()
 def main():
     if len(sys.argv) != 2:
-        print 'usage: python mimic.py file-to-read'
+        print 'usage: ./mimic.py file-to-read'
         sys.exit(1)
 
-    d = create_mimic_dict(sys.argv[1])
-    print_mimic(d, '')
+    dict = mimic_dict(sys.argv[1])
+    print_mimic(dict, '')
 
 
 if __name__ == '__main__':
