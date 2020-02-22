@@ -82,28 +82,60 @@ def create_mimic_dict(filename):
 # def mimic_dict(filename):
 #     """Returns mimic dict mapping each word to list of words which follow it."""
 #     mimic = {}
-#     prev = ''
-with open('alice.txt') as f:
-        # one full text line
-    #     words = f.read().split()
-    # for word in words:
-    #     print(word)
-    for line in f:
-        l = list(line)
-        for char in l:
-            print(char)
+# #     prev = ''
+# with open('alice.txt') as f:
+#         # one full text line
+#     #     words = f.read().split()
+#     # for word in words:
+#     #     print(word)
+#     for line in f:
+#         l = list(line)
+#         for char in l:
+#             print(char)
+
+def mimic_dict(filename):
+    """Returns mimic dict mapping each word to list of words which follow it."""
+    mimic = {}
+    prev = ''
+    with open('filename') as f:
+        # will read the file as one big string,
+        words = f.read().split()
+        f.close()
+    for word in words:
+
+        if not prev in mimic:
+            mimic[prev] = [word]
+        else:
+            mimic[prev].append(word)
+        prev = word
+    return mimic
 
 
+def print_mimic(mimic_dict, word):
+    """Given mimic dict and start word, prints 200 random words:
+        - Start with '' (empty string) as a seed word.
+        - Print the seed word
+        - Lookup this word in your mimic_dict and get it's value list
+        - Randomly select a new seed word from this word list
+        - Repeat this process 200 times
+    """
+    for word in range(200):
+        print (word)
+        _next = mimic_dict[word]
+        if not _next:
+            _next = mimic_dict['']
+        word = random.choice(_next)
 
+# Provided main(), calls mimic_dict() and mimic()
 
 
 # Provided main(), calls mimic_dict() and mimic()
 def main():
-    if len(sys.argv) != 2:
-        print 'usage: python mimic.py file-to-read'
+    if len(sys.argv) != 3:
+        print('usage: python mimic.py file-to-read')
         sys.exit(1)
 
-    d = create_mimic_dict(sys.argv[1])
+    d = mimic_dict(sys.argv[1])
     print_mimic(d, '')
 
 
