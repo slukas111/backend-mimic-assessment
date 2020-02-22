@@ -92,51 +92,41 @@ def create_mimic_dict(filename):
 #         l = list(line)
 #         for char in l:
 #             print(char)
-
+##got some help
 def mimic_dict(filename):
-    """Returns mimic dict mapping each word to list of words which follow it."""
-    mimic = {}
+    mimic_dict = {}
+    f = open(filename, 'r')
+    text = f.read()
+    f.close()
+    words = text.split()
     prev = ''
-    with open('filename') as f:
-        # will read the file as one big string,
-        words = f.read().split()
-        f.close()
     for word in words:
-
-        if not prev in mimic:
-            mimic[prev] = [word]
+        if not prev in mimic_dict:
+            mimic_dict[prev] = [word]
         else:
-            mimic[prev].append(word)
+            mimic_dict[prev].append(word)
+
         prev = word
-    return mimic
+    return mimic_dict
 
 
 def print_mimic(mimic_dict, word):
-    """Given mimic dict and start word, prints 200 random words:
-        - Start with '' (empty string) as a seed word.
-        - Print the seed word
-        - Lookup this word in your mimic_dict and get it's value list
-        - Randomly select a new seed word from this word list
-        - Repeat this process 200 times
-    """
-    for word in range(200):
-        print (word)
-        _next = mimic_dict[word]
-        if not _next:
-            _next = mimic_dict['']
-        word = random.choice(_next)
-
-# Provided main(), calls mimic_dict() and mimic()
+    for unused_i in range(200):
+        print word,
+        nexts = mimic_dict.get(word)          # Returns None if not found
+        if not nexts:
+            nexts = mimic_dict['']  # Fallback to '' if not found
+        word = random.choice(nexts)
 
 
 # Provided main(), calls mimic_dict() and mimic()
 def main():
-    if len(sys.argv) != 3:
-        print('usage: python mimic.py file-to-read')
+    if len(sys.argv) != 2:
+        print 'usage: ./mimic.py file-to-read'
         sys.exit(1)
 
-    d = mimic_dict(sys.argv[1])
-    print_mimic(d, '')
+    dict = mimic_dict(sys.argv[1])
+    print_mimic(dict, '')
 
 
 if __name__ == '__main__':
