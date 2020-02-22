@@ -79,6 +79,7 @@ def create_mimic_dict(filename):
     # +++your code here+++
     #pass
 
+<<<<<<< HEAD
 # def mimic_dict(filename):
 #     """Returns mimic dict mapping each word to list of words which follow it."""
 #     mimic = {}
@@ -119,6 +120,9 @@ def print_mimic(mimic_dict, word):
         word = random.choice(nexts)
 
 
+=======
+    
+>>>>>>> 4171e9f5b28a6e002e307dda0cff8acf1ea74ebd
 # Provided main(), calls mimic_dict() and mimic()
 def main():
     if len(sys.argv) != 2:
