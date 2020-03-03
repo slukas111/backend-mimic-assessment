@@ -46,8 +46,9 @@ columns, so the output looks better.
 import random
 import sys
 
-__author__ = "???"
+__author__ = "Sasha Lukas"
 
+'''took several days. project had a head issue, resolved.''' 
 
 def create_mimic_dict(filename):
     """Returns mimic dict mapping each word to list of words which follow it.
@@ -79,26 +80,11 @@ def create_mimic_dict(filename):
     # +++your code here+++
     #pass
 
-<<<<<<< HEAD
-# def mimic_dict(filename):
-#     """Returns mimic dict mapping each word to list of words which follow it."""
-#     mimic = {}
-# #     prev = ''
-# with open('alice.txt') as f:
-#         # one full text line
-#     #     words = f.read().split()
-#     # for word in words:
-#     #     print(word)
-#     for line in f:
-#         l = list(line)
-#         for char in l:
-#             print(char)
-##got some help
 def mimic_dict(filename):
     mimic_dict = {}
     f = open(filename, 'r')
     text = f.read()
-    f.close()
+   # f.close()
     words = text.split()
     prev = ''
     for word in words:
@@ -109,7 +95,7 @@ def mimic_dict(filename):
 
         prev = word
     return mimic_dict
-
+#creating empty dictionary. split and interate through each word. 
 
 def print_mimic(mimic_dict, word):
     for unused_i in range(200):
@@ -118,12 +104,8 @@ def print_mimic(mimic_dict, word):
         if not nexts:
             nexts = mimic_dict['']  # Fallback to '' if not found
         word = random.choice(nexts)
+##printing out the random 200 words of the text file. 
 
-
-=======
-    
->>>>>>> 4171e9f5b28a6e002e307dda0cff8acf1ea74ebd
-# Provided main(), calls mimic_dict() and mimic()
 def main():
     if len(sys.argv) != 2:
         print 'usage: ./mimic.py file-to-read'
